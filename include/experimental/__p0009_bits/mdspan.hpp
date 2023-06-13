@@ -109,8 +109,8 @@ public:
   MDSPAN_TEMPLATE_REQUIRES(
     class... SizeTypes,
     /* requires */ (
-      _MDSPAN_FOLD_AND(_MDSPAN_TRAIT(std::is_convertible, SizeTypes, index_type) /* && ... */) &&
-      _MDSPAN_FOLD_AND(_MDSPAN_TRAIT(std::is_nothrow_constructible, index_type, SizeTypes) /* && ... */) &&
+      _MDSPAN_TRAIT(std::conjunction, std::is_convertible<SizeTypes, index_type>...) &&
+      _MDSPAN_TRAIT(std::conjunction, std::is_nothrow_constructible<index_type, SizeTypes>...) &&
       ((sizeof...(SizeTypes) == rank()) || (sizeof...(SizeTypes) == rank_dynamic())) &&
       _MDSPAN_TRAIT(std::is_constructible, mapping_type, extents_type) &&
       _MDSPAN_TRAIT(std::is_default_constructible, accessor_type)
@@ -271,8 +271,8 @@ public:
   MDSPAN_TEMPLATE_REQUIRES(
     class... SizeTypes,
     /* requires */ (
-      _MDSPAN_FOLD_AND(_MDSPAN_TRAIT(std::is_convertible, SizeTypes, index_type) /* && ... */) &&
-      _MDSPAN_FOLD_AND(_MDSPAN_TRAIT(std::is_nothrow_constructible, index_type, SizeTypes) /* && ... */) &&
+      _MDSPAN_TRAIT(std::conjunction, std::is_convertible<SizeTypes, index_type>...) &&
+      _MDSPAN_TRAIT(std::conjunction, std::is_nothrow_constructible<index_type, SizeTypes>...) &&
       extents_type::rank() == sizeof...(SizeTypes)
     )
   )

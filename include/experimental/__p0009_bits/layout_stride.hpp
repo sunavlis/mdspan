@@ -393,8 +393,8 @@ struct layout_stride {
       class... Indices,
       /* requires */ (
         sizeof...(Indices) == Extents::rank() &&
-        _MDSPAN_FOLD_AND(_MDSPAN_TRAIT(std::is_convertible, Indices, index_type) /*&& ...*/ ) &&
-        _MDSPAN_FOLD_AND(_MDSPAN_TRAIT(std::is_nothrow_constructible, index_type, Indices) /*&& ...*/)
+        _MDSPAN_TRAIT(std::conjunction, std::is_convertible<Indices, index_type>...) &&
+        _MDSPAN_TRAIT(std::conjunction, std::is_nothrow_constructible<index_type, Indices>...)
       )
     )
     MDSPAN_FORCE_INLINE_FUNCTION
