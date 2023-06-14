@@ -27,6 +27,7 @@
 #include <functional>
 #include <iostream>
 #include <memory>
+#include <string>
 #include <type_traits>
 
 // mfh 2022/08/08: This is based on my comment on RAPIDS RAFT issue 725:

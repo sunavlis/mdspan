@@ -18,6 +18,7 @@
 #include <cassert>
 #include <chrono>
 #include <iostream>
+#include <string>
 #include <type_traits>
 #include <vector>
 
